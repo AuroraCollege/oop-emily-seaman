@@ -16,21 +16,29 @@ class Car(Vehicle):
 
     def car_specific_info(self):
         return f"This car is a {self.vehicle_type}."
-    
-# Derived class for motorbikes
-    def __init__(self, make, model, year, type_of_bike):
+
+# Polymorphic function
+def print_vehicle_info(vehicle):
+    print(vehicle.display_info())
+
+# Derived class for Motorbikes
+class Motorbike(Vehicle):
+    def __init__(self, make, model, year, bike_type):
         super().__init__(make, model, year)
-        self.type_of_bike = type_of_bike  # e.g., "Road Bike" or "Mountain Bike"
+        self.bike_type = bike_type  # e.g., "Sport Bike", "Cruiser", "Off-road"
 
     def bike_specific_info(self):
-        return f"This bike is a {self.type_of_bike}."
-    
+        return f"This motorbike is a {self.bike_type}."
+
+# Polymorphic function
+def print_vehicle_info(vehicle):
+    print(vehicle.display_info())
+
 # Example usage
-car = Car("Toyota", "Prado", 2022, "SUV")
-print(car.display_info())
+car = Car("Toyota", "Prado", 2022, "Diesel")
+print_vehicle_info(car)  # Calls display_info() method from Car
 print(car.car_specific_info())
 
 motorbike = Motorbike("Yamaha", "MT-07", 2021, "Sport Bike")
 print_vehicle_info(motorbike)  # Calls display_info() method from Motorbike
 print(motorbike.bike_specific_info())  # Calls bike_specific_info() specific to Motorbike
-
